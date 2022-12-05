@@ -1,5 +1,5 @@
 from collections import defaultdict
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 
 NodeValue = Optional[int | str]
@@ -8,7 +8,7 @@ Graph = dict[NodeValue, list[NodeValue]]
 
 @dataclass
 class Edges:
-    edge_list: list[tuple]
+    edge_list: list[tuple | list]
 
     def to_graph(self):
         graph = defaultdict(list)

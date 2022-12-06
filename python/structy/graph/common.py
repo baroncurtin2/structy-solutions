@@ -4,6 +4,7 @@ from typing import Optional
 
 NodeValue = Optional[int | str]
 Graph = dict[NodeValue, list[NodeValue]]
+Grid = list[list[str]]
 
 
 @dataclass

@@ -1,9 +1,8 @@
 from collections import deque
-
 from structy.graph.common import Grid
 
 
-def island_count_bfs(grid: Grid) -> int:
+def minimum_island_bfs(grid: Grid) -> int:
     # r = number of rows
     # c = number of columns
     # Time: O(rc)
@@ -11,33 +10,34 @@ def island_count_bfs(grid: Grid) -> int:
     if not grid:
         return 0
 
+    min_size = float("inf")
     lands = {(i, j) for i in range(len(grid)) for j in range(len(grid[0])) if grid[i][j] == "L"}
 
-    count = 0
-
     while lands:
-        count += 1
-
         row, col = lands.pop()
-
         connected = deque([(row, col)])
+        size = 1
 
         while connected:
             i, j = connected.popleft()
 
             for x in [-1, 1]:
                 if (i + x, j) in lands:
+                    size += 1
                     connected.append((i + x, j))
                     lands.remove((i + x, j))
 
                 if (i, j + x) in lands:
+                    size += 1
                     connected.append((i, j + x))
                     lands.remove((i, j + x))
 
-    return count
+        min_size = min(size, min_size)
+
+    return min_size
 
 
-def island_count_dfs(grid: Grid) -> int:
+def minimum_island_dfs(grid: Grid) -> int:
     # r = number of rows
     # c = number of columns
     # Time: O(rc)
@@ -45,49 +45,49 @@ def island_count_dfs(grid: Grid) -> int:
     if not grid:
         return 0
 
+    min_size = float("inf")
     lands = {(i, j) for i in range(len(grid)) for j in range(len(grid[0])) if grid[i][j] == "L"}
 
-    count = 0
-
     while lands:
-        count += 1
-
         row, col = lands.pop()
-
         connected = [(row, col)]
+        size = 1
 
         while connected:
             i, j = connected.pop()
 
             for x in [-1, 1]:
                 if (i + x, j) in lands:
+                    size += 1
                     connected.append((i + x, j))
                     lands.remove((i + x, j))
 
                 if (i, j + x) in lands:
+                    size += 1
                     connected.append((i, j + x))
                     lands.remove((i, j + x))
 
-    return count
+        min_size = min(size, min_size)
+
+    return min_size
 
 
-def island_count_recur(grid: Grid) -> int:
+def minimum_island_recur(grid: Grid) -> int:
     # r = number of rows
     # c = number of columns
     # Time: O(rc)
     # Space: O(rc)
-    if not grid:
-        return 0
-
     visited = set()
-    count = 0
+    min_size = float("inf")
 
-    for row in range(len(grid)):
-        for col in range(len(grid[0])):
-            if _explore(grid, row, col, visited):
-                count += 1
+    for r in range(len(grid)):
+        for c in range(len(grid[0])):
+            size = _explore_size(grid, r, c, visited)
 
-    return count
+            if 0 < size < min_size:
+                min_size = size
+
+    return min_size
 
 
 def _inbounds(grid: Grid, row: int, col: int) -> bool:
@@ -97,22 +97,22 @@ def _inbounds(grid: Grid, row: int, col: int) -> bool:
     return row_in and col_in
 
 
-def _explore(grid: Grid, row: int, col: int, visited: set) -> bool:
+def _explore_size(grid: Grid, row: int, col: int, visited: set) -> int:
     if not _inbounds(grid, row, col):
-        return False
+        return 0
 
     if grid[row][col] == "W":
-        return False
+        return 0
 
     pos = (row, col)
     if pos in visited:
-        return False
+        return 0
 
     visited.add(pos)
+    size = 1
 
-    _explore(grid, row - 1, col, visited)
-    _explore(grid, row + 1, col, visited)
-    _explore(grid, row, col - 1, visited)
-    _explore(grid, row, col + 1, visited)
+    for x in [-1, 1]:
+        size += _explore_size(grid, row + x, col, visited)
+        size += _explore_size(grid, row, col + x, visited)
 
-    return True
+    return size

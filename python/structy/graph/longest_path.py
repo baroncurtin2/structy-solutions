@@ -19,6 +19,7 @@ def longest_path_dfs(graph: Graph) -> int:
                 distance[node] = max(distance[node], dis)
                 continue
 
+            distance[current] = max(distance[current], dis)
             neighbors = [(neighbor, dis + 1) for neighbor in graph[current]]
             stack = [*stack, *neighbors]
 

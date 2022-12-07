@@ -5,11 +5,12 @@ from typing import Optional
 NodeValue = Optional[int | str]
 Graph = dict[NodeValue, list[NodeValue]]
 Grid = list[list[str]]
+EdgeList = list[tuple | list]
 
 
 @dataclass
 class Edges:
-    edge_list: list[tuple | list]
+    edge_list: EdgeList
 
     def to_graph(self):
         graph = defaultdict(list)

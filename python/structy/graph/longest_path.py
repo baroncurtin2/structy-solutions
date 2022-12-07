@@ -7,22 +7,20 @@ def longest_path_dfs(graph: Graph) -> int:
     distance = defaultdict(int, {node: 0 for node in graph if len(graph[node]) == 0})
 
     for node in graph:
-        if node in distance:
+        if (node in distance) and (distance[node] == 0):
             continue
 
-        current_distance = 1
-        stack = graph[node]
+        stack = [(node, 0)]
 
         while stack:
-            current = stack.pop()
+            current, dis = stack.pop()
 
-            if distance.get(current) == 0:
+            if (current in distance) and (distance[current] == 0):
+                distance[node] = max(distance[node], dis)
                 continue
-            current_distance += 1
 
-            stack = [*stack, *graph[current]]
-
-        distance[node] = max(distance[node], current_distance)
+            neighbors = [(neighbor, dis + 1) for neighbor in graph[current]]
+            stack = [*stack, *neighbors]
 
     return max(distance.values())
 

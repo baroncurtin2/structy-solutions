@@ -1,6 +1,6 @@
-import pytest
-
 from dataclasses import dataclass
+
+import pytest
 
 from structy.graph.common import Graph
 from structy.graph.longest_path import longest_path_dfs, longest_path_recur
@@ -16,7 +16,11 @@ class LongestPathTestCase:
 def test_cases() -> list[LongestPathTestCase]:
     return [
         LongestPathTestCase(
-            graph={"a": ["c", "b"], "b": ["c"], "c": []},
+            graph={
+                "a": ["c", "b"],
+                "b": ["c"],
+                "c": [],
+            },
             expected=2,
         ),
         LongestPathTestCase(

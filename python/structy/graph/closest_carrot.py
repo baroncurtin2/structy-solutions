@@ -17,7 +17,7 @@ def closest_carrot(grid: Grid, starting_row: int, starting_col: int) -> int:
     while queue:
         row, col, distance = queue.popleft()
 
-        if grid[row][col] == "C":
+        if grid[row][col] == CARROT:
             return distance
 
         for x in [-1, 1]:

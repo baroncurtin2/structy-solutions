@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import pytest
 
 from structy.graph.common import EdgeList
-from structy.graph.semesters_required import semesters_required_dfs
+from structy.graph.semesters_required import semesters_required_dfs, semesters_required_recur
 
 
 @dataclass
@@ -79,3 +79,8 @@ def test_cases() -> list[SemestersRequiredTestCase]:
 def test_semesters_required_dfs(test_cases):
     for t in test_cases:
         assert semesters_required_dfs(t.num_courses, t.pre_reqs) == t.expected
+
+
+def test_semesters_required_recur(test_cases):
+    for t in test_cases:
+        assert semesters_required_recur(t.num_courses, t.pre_reqs) == t.expected

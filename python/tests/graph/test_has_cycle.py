@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 import pytest
 
-from structy.graph.has_cycle import has_cycle_dfs_iter
+from structy.graph.has_cycle import has_cycle_dfs_iter, has_cycle_recur
 
 
 @dataclass
@@ -78,3 +78,8 @@ def test_cases() -> list[HasCycleTestCase]:
 def test_has_cycle_dfs_iter(test_cases):
     for t in test_cases:
         assert has_cycle_dfs_iter(t.adj_list) == t.expected
+
+
+def test_has_cycle_recur(test_cases):
+    for t in test_cases:
+        assert has_cycle_recur(t.adj_list) == t.expected

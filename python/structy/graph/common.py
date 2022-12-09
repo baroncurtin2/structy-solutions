@@ -20,3 +20,16 @@ class Edges:
             graph[node_b].append(node_a)
 
         return graph
+
+
+@dataclass
+class Prereqs:
+    pre_reqs_list: EdgeList
+
+    def to_graph(self):
+        graph = defaultdict(list)
+
+        for (a, b) in self.pre_reqs_list:
+            graph[a].append(b)
+
+        return graph

@@ -4,7 +4,7 @@ import pytest
 from structy.dynamic_programming.fib import fib
 
 
-@dataclass
+@dataclass(slots=True)
 class FibTestCase:
     n: int
     expected: int

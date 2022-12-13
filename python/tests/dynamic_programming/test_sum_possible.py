@@ -5,7 +5,7 @@ import pytest
 from structy.dynamic_programming.sum_possible import sum_possible
 
 
-@dataclass
+@dataclass(slots=True)
 class SumPossibleTestCase:
     amount: int
     numbers: list[int]

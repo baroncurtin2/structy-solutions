@@ -4,7 +4,7 @@ from typing import Optional, Self
 NodeValue = Optional[int | str]
 
 
-@dataclass
+@dataclass(slots=True)
 class Node:
     val: NodeValue
     left: Optional[Self] = None

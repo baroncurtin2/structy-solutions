@@ -5,7 +5,7 @@ import pytest
 from structy.dynamic_programming.min_change import min_change
 
 
-@dataclass
+@dataclass(slots=True)
 class MinChangeTestCase:
     amount: int
     coins: list[int]

@@ -5,7 +5,7 @@ import pytest
 from structy.graph.has_cycle import has_cycle_dfs_iter, has_cycle_recur
 
 
-@dataclass
+@dataclass(slots=True)
 class HasCycleTestCase:
     adj_list: dict[str, list[str]]
     expected: bool

@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from structy.graph.common import Grid
 
 
-@dataclass
+@dataclass(slots=True)
 class ClosestCarrotTestCase:
     grid: Grid
     starting_row: int

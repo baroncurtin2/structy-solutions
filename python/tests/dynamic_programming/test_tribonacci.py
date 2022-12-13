@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from structy.dynamic_programming.tribonacci import tribonacci
 
 
-@dataclass
+@dataclass(slots=True)
 class TribonacciTestCase:
     n: int
     expected: int

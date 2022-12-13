@@ -10,7 +10,7 @@ from structy.graph.undirected_path import (
 )
 
 
-@dataclass
+@dataclass(slots=True)
 class UndirectedPathTest:
     edges: list[tuple]
     node_a: NodeValue

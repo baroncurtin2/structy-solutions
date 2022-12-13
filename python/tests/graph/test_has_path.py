@@ -6,7 +6,7 @@ from structy.graph.common import NodeValue
 from structy.graph.has_path import has_path_bfs_iter, has_path_dfs_iter, has_path_dfs_recur
 
 
-@dataclass
+@dataclass(slots=True)
 class HasPathTestCase:
     graph: dict
     src: NodeValue

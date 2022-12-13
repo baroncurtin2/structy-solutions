@@ -6,7 +6,7 @@ from structy.graph.common import EdgeList
 from structy.graph.semesters_required import semesters_required_dfs, semesters_required_recur
 
 
-@dataclass
+@dataclass(slots=True)
 class SemestersRequiredTestCase:
     num_courses: int
     pre_reqs: EdgeList

@@ -6,7 +6,7 @@ from structy.graph.common import NodeValue
 from structy.graph.shortest_path import shortest_path
 
 
-@dataclass
+@dataclass(slots=True)
 class ShortestPathTestCase:
     edges: list[list]
     node_a: NodeValue

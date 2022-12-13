@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from structy.graph.island_count import Grid, island_count_recur, island_count_bfs, island_count_dfs
 
 
-@dataclass
+@dataclass(slots=True)
 class IslandCountTestCase:
     grid: Grid
     expected: int

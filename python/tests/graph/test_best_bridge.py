@@ -6,7 +6,7 @@ from structy.graph.best_bridge import best_bridge, find_island_recur, find_islan
 from structy.graph.common import Grid
 
 
-@dataclass
+@dataclass(slots=True)
 class BestBridgeTestCase:
     grid: Grid
     expected: int

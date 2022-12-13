@@ -5,7 +5,7 @@ import pytest
 from structy.graph.prereqs_possible import prereqs_possible_iter, prereqs_possible_recur
 
 
-@dataclass
+@dataclass(slots=True)
 class PrereqsPossibleTestCase:
     num_courses: int
     pre_reqs: list[tuple[int, int]]

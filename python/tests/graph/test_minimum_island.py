@@ -6,7 +6,7 @@ from structy.graph.common import Grid
 from structy.graph.minimum_island import minimum_island_bfs, minimum_island_dfs, minimum_island_recur
 
 
-@dataclass
+@dataclass(slots=True)
 class MinimumIslandTestCase:
     grid: Grid
     expected: int

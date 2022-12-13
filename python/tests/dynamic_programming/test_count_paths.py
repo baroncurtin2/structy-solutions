@@ -5,7 +5,7 @@ import pytest
 from structy.dynamic_programming.count_paths import count_paths
 
 
-@dataclass
+@dataclass(slots=True)
 class CountPathsTestCase:
     grid: list[list[str]]
     expected: int

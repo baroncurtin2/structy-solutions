@@ -5,7 +5,7 @@ import pytest
 from structy.dynamic_programming.max_path_sum import Grid, max_path_sum
 
 
-@dataclass
+@dataclass(slots=True)
 class MaxPathSumTestCase:
     grid: Grid
     expected: int

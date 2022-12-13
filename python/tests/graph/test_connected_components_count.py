@@ -9,7 +9,7 @@ from structy.graph.connected_components_count import (
 )
 
 
-@dataclass
+@dataclass(slots=True)
 class ConnComponentsTestCase:
     graph: dict[NodeValue, list[NodeValue]]
     expected: int

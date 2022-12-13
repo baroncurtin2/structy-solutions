@@ -6,7 +6,7 @@ import pytest
 from structy.graph.knight_attack import knight_attack
 
 
-@dataclass
+@dataclass(slots=True)
 class KnightAttackTestCase:
     func_args: tuple[int, int, int, int, int]
     expected: Optional[int]

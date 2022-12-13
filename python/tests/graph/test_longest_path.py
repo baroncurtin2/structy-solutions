@@ -6,7 +6,7 @@ from structy.graph.common import Graph
 from structy.graph.longest_path import longest_path_dfs, longest_path_recur
 
 
-@dataclass
+@dataclass(slots=True)
 class LongestPathTestCase:
     graph: Graph
     expected: int

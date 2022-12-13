@@ -8,7 +8,7 @@ Grid = list[list[str]]
 EdgeList = list[tuple | list]
 
 
-@dataclass
+@dataclass(slots=True)
 class Edges:
     edge_list: EdgeList
 
@@ -22,7 +22,7 @@ class Edges:
         return graph
 
 
-@dataclass
+@dataclass(slots=True)
 class Prereqs:
     pre_reqs_list: EdgeList
 

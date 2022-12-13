@@ -5,7 +5,7 @@ from structy.graph.common import Graph
 from structy.graph.largest_component import largest_component_bfs, largest_component_recur, largest_component_dfs
 
 
-@dataclass
+@dataclass(slots=True)
 class LargestComponentTestCase:
     graph: Graph
     expected: int

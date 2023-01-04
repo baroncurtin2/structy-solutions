@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 import pytest
 
-from structy.exhaustive_recursion.permutations import permutations, permutations_with_tail_call_optimization
+from structy.exhaustive_recursion.permutations import create_combinations, permutations_with_tail_call_optimization
 
 
 @dataclass(slots=True)
@@ -70,4 +70,4 @@ def test_cases() -> list[PermutationsTestCase]:
 
 def test_permutations(test_cases: list[PermutationsTestCase]) -> None:
     for t in test_cases:
-        assert permutations(t.items) == t.expected
+        assert create_combinations(t.items) == t.expected

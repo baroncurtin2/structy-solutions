@@ -1,11 +1,11 @@
-def permutations(items: list[str]) -> list[list[str]]:
+def create_combinations(items: list[str]) -> list[list[str]]:
     if not items:
         return [[]]
 
     first = items[0]
     remaining = items[1:]
 
-    return [perm[:i] + [first] + perm[i:] for perm in permutations(remaining) for i in range(len(perm) + 1)]
+    return [perm[:i] + [first] + perm[i:] for perm in create_combinations(remaining) for i in range(len(perm) + 1)]
 
 
 def permutations_with_tail_call_optimization(items: list[str]) -> list[list[str]]:

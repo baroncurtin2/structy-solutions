@@ -60,4 +60,4 @@ def test_cases() -> list[CanConcatTestCase]:
 
 def test_can_concat(test_cases):
     for t in test_cases:
-        assert can_concat(t.s, t.words) == t.expected
+        assert can_concat(t.sentence, t.words) == t.expected

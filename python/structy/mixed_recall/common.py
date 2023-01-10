@@ -5,17 +5,17 @@ NodeValue = str | int
 
 
 @dataclass(slots=True)
-class Node:
+class LinkedListNode:
     val: NodeValue
-    next: "Node" = field(default=None, init=False)
+    next: "LinkedListNode" = field(default=None, init=False)
 
 
 @dataclass(slots=True)
 class LinkedList:
-    head: Optional[Node] = None
+    head: Optional[LinkedListNode] = None
 
     def append(self, value: NodeValue) -> None:
-        new_node = Node(value)
+        new_node = LinkedListNode(value)
 
         if not self.head:
             self.head = new_node
@@ -27,7 +27,7 @@ class LinkedList:
 
         current.next = new_node
 
-    def append_node(self, node: Node) -> None:
+    def append_node(self, node: LinkedListNode) -> None:
         if not self.head:
             self.head = node
             return
@@ -55,7 +55,7 @@ class LinkedList:
         prev = None
 
         for i, val in enumerate(values):
-            new_node = Node(val)
+            new_node = LinkedListNode(val)
 
             if prev:
                 prev.next = new_node
@@ -72,3 +72,34 @@ class LinkedList:
             cycle_end.next = cycle_start
 
         return linked_list
+
+
+@dataclass(slots=True)
+class BinaryTreeNode:
+    val: NodeValue
+    left: "BinaryTreeNode" = field(default=None, init=False)
+    right: "BinaryTreeNode" = field(default=None, init=False)
+
+
+@dataclass(slots=True)
+class BinaryTree:
+    root: BinaryTreeNode = None
+
+    def insert(self, value: NodeValue) -> None:
+        if not self.root:
+            self.root = BinaryTreeNode(value)
+            return
+
+        current = self.root
+
+        while current:
+            if value < current.val:
+                if not current.left:
+                    current.left = BinaryTreeNode(value)
+                    return
+                current = current.left
+            else:
+                if not current.right:
+                    current.right = BinaryTreeNode(value)
+                    return
+                current = current.right

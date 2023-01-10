@@ -1,7 +1,7 @@
-from .common import LinkedList, NodeValue, Node
+from .common import LinkedList, NodeValue, LinkedListNode
 
 
-def linked_list_cycle(head: Node) -> bool:
+def linked_list_cycle(head: LinkedListNode) -> bool:
     # n = number of nodes
     # Time: O(n)
     # Space: O(n)
@@ -18,7 +18,7 @@ def linked_list_cycle(head: Node) -> bool:
     return False
 
 
-def linked_list_cycle_pointers(head: Node) -> bool:
+def linked_list_cycle_pointers(head: LinkedListNode) -> bool:
     # n = number of nodes
     # Time: O(n)
     # Space: O(1)

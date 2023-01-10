@@ -1,7 +1,7 @@
-from structy.mixed_recall.common import Node
+from structy.mixed_recall.common import LinkedListNode
 
 
-def linked_palindrome(head: Node) -> bool:
+def linked_palindrome(head: LinkedListNode) -> bool:
     values = []
     current = head
 

@@ -1,7 +1,7 @@
-from structy.mixed_recall.common import Node, NodeValue
+from structy.mixed_recall.common import LinkedListNode, NodeValue
 
 
-def middle_value(head: Node) -> NodeValue:
+def middle_value(head: LinkedListNode) -> NodeValue:
     # n = number of nodes
     # Time: O(n)
     # Space: O(n)
@@ -16,7 +16,7 @@ def middle_value(head: Node) -> NodeValue:
     return values[mid]
 
 
-def middle_value_pointers(head: Node) -> NodeValue:
+def middle_value_pointers(head: LinkedListNode) -> NodeValue:
     # n = number of nodes
     # Time: O(n)
     # Space: O(1)

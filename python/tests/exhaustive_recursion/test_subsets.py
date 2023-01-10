@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 import pytest
 
-from structy.exhaustive_recursion.subsets import subsets, subsets_with_tail_call_optimization
+from structy.exhaustive_recursion.subsets import subsets
 
 
 @dataclass(slots=True)
@@ -57,8 +57,3 @@ def test_cases() -> list[SubsetsTestCase]:
 def test_subsets(test_cases: list[SubsetsTestCase]) -> None:
     for t in test_cases:
         assert subsets(t.elements) == t.expected
-
-
-def test_subsets_with_tail_call_optimization(test_cases: list[SubsetsTestCase]) -> None:
-    for t in test_cases:
-        assert subsets_with_tail_call_optimization(t.elements) == t.expected

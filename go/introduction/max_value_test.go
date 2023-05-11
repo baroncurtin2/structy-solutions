@@ -61,3 +61,14 @@ func Test_maxValueDivideAndConquer(t *testing.T) {
 		require.Equal(t, tc.maxValue, *actualMax)
 	}
 }
+
+func Test_maxValueDivideAndConquerConcurrency(t *testing.T) {
+	for _, tc := range testCases {
+		actualMax, err := maxValueDivideAndConquerConcurrency(tc.numbers)
+
+		require.NoError(t, err)
+		require.NotEmpty(t, actualMax)
+		require.NotNil(t, actualMax)
+		require.Equal(t, tc.maxValue, *actualMax)
+	}
+}

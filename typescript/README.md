@@ -1,0 +1,1 @@
+# typescript-structy-solutions
